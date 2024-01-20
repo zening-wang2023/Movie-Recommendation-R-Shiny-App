@@ -4,7 +4,7 @@ This script is designed to recommend the five best movies based on user preferen
 
 ## Introduction
 
-##### App overview and how to use the app
+### App overview and how to use the app
 
 All the data are stored in a file named "movies.csv". At the beginning of the Shiny app, we use the `source` function to run the code in "movie_recommend_model.R", which loads the data from "movies.csv" and implements the model for this movie recommendation Shiny app (note that it takes about 20-30 seconds to run "movie_recommend_model.R"). Upon opening the app, users are greeted with an engaging opening animation and selectable background music, offering various styles such as love, discovery, suspense, and joy to suit different moods. The music can be paused or resumed at any time. The app is divided into two main sections, accessible through tab panels at the top: "Recommend by Previously Watched Movie" and "Recommend by Genres/Actors/Directors". Recognizing that people seek movie recommendations in different ways, the app contains two models: one for suggesting movies similar to those previously enjoyed, and another for recommendations based on favorite genres, actors, or directors. Users can seamlessly switch between these models using the panels at the top.
 
