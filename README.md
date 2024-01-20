@@ -14,7 +14,7 @@ Once the five movie recommendations are available, users are encouraged to click
 
 ## Methods / Implementation
 
-##### Data cleaning
+### Data cleaning
 
 The first step in our process is data cleaning. Initially, the script reads in "movies.csv" and defines a function `movie_top_n` to extract top movies based on parameters like popularity, revenue, vote average, and vote count. Additionally, it incorporates functions to remove Unicode characters and stop words from the movie data.
 
@@ -22,7 +22,7 @@ Subsequently, the script generates a subset of the movie dataset, named "movies_
 
 The next phase involves transforming the character data into numeric values. For this purpose, we use a TF-IDF (Term Frequency-Inverse Document Frequency) vectorizer. The resulting TF-IDF matrix is instrumental in calculating the cosine similarity between movies. This calculation leads to the creation of a similarity matrix. The similarity matrix is a 1000x1000 symmetric matrix, containing the similarity scores of each movie with every other movie in the dataset.
 
-##### Models building
+### Models building
 Our process begins with the movie recommendation function, designed to suggest films based on a user's input of their favorite movie. The function `recommend_movies` achieves this by identifying the closest match in the dataset, retrieving that movie's similarity score with other films, and then ranking these scores to select the six most similar movies. The core logic involves using a similarity score matrix for movies, selecting scores associated with a specific movie, sorting these scores to find the most similar movies, and finally returning the top recommendations, excluding the original movie from the list. The reason for retrieving the top six movies is to ensure the original movie, if it appears in the top ranks, is removed, leaving five distinct recommendations based on the user's previously enjoyed movies.
 
 In addition to this, we have developed another model for movie recommendations based on genre, actor, and director. The function `recommend_movies_b` recommends movies based on a user’s combination of preferred genre, actor, and director. It treats the user's input as a new, hypothetical "dream movie" in the dataset, encompassing all the user's favorite characteristics. The model calculates TF-IDF vectors and assesses the similarity of the "dream movie" to all other movies in the dataset. To enhance run-time efficiency, instead of computing the entire 1001x1001 similarity matrix, which would take approximately 15 seconds, we calculate only the last column/row, representing the similarity scores of the "dream movie" to the other 1000 movies. We then rank these similarity scores and identify the top 5 movies with the highest similarity to the "dream movie". This approach enables us to recommend the five most suitable movies to users based on their preferred genre, actor, and director.
